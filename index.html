@@ -25,6 +25,7 @@
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -33,7 +34,7 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.markercluster.js"></script>
-        <script src="data/crk_tmp_1.js"></script>
+        <script src="data/20230502_coords_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -52,7 +53,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[20.78799208860138,-9.033861087444592],[68.40892759517004,58.01005783147369]]);
+        }).fitBounds([[-1.1021850078721422,-31.801081359911375],[66.88680500731087,134.91663037156843]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -73,7 +74,33 @@
         });
         layer_StamenWatercolor_0;
         map.addLayer(layer_StamenWatercolor_0);
-        function pop_crk_tmp_1(feature, layer) {
+        map.createPane('pane_StamenTerrainLines_1');
+        map.getPane('pane_StamenTerrainLines_1').style.zIndex = 401;
+        var layer_StamenTerrainLines_1 = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain-lines/{z}/{x}/{y}.png', {
+            pane: 'pane_StamenTerrainLines_1',
+            opacity: 1.0,
+            attribution: '<a href="https://maps.stamen.com/">Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_StamenTerrainLines_1;
+        map.addLayer(layer_StamenTerrainLines_1);
+        map.createPane('pane_StamenTerrainLabels_2');
+        map.getPane('pane_StamenTerrainLabels_2').style.zIndex = 402;
+        var layer_StamenTerrainLabels_2 = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain-labels/{z}/{x}/{y}.png', {
+            pane: 'pane_StamenTerrainLabels_2',
+            opacity: 1.0,
+            attribution: '<a href="https://maps.stamen.com/">Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_StamenTerrainLabels_2;
+        map.addLayer(layer_StamenTerrainLabels_2);
+        function pop_20230502_coords_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -84,48 +111,56 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['field_1'] !== null ? autolinker.link(feature.properties['field_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['field_2'] !== null ? autolinker.link(feature.properties['field_2'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_crk_tmp_1_0() {
+        function style_20230502_coords_3_0() {
             return {
-                pane: 'pane_crk_tmp_1',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/skull.svg',
-            iconSize: [38.0, 38.0]
-        }),
+                pane: 'pane_20230502_coords_3',
+                shape: 'diamond',
+                radius: 8.8,
+                opacity: 1,
+                color: 'rgba(50,87,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,123,182,1.0)',
                 interactive: true,
             }
         }
-        map.createPane('pane_crk_tmp_1');
-        map.getPane('pane_crk_tmp_1').style.zIndex = 401;
-        map.getPane('pane_crk_tmp_1').style['mix-blend-mode'] = 'normal';
-        var layer_crk_tmp_1 = new L.geoJson(json_crk_tmp_1, {
+        map.createPane('pane_20230502_coords_3');
+        map.getPane('pane_20230502_coords_3').style.zIndex = 403;
+        map.getPane('pane_20230502_coords_3').style['mix-blend-mode'] = 'normal';
+        var layer_20230502_coords_3 = new L.geoJson(json_20230502_coords_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_crk_tmp_1',
-            layerName: 'layer_crk_tmp_1',
-            pane: 'pane_crk_tmp_1',
-            onEachFeature: pop_crk_tmp_1,
+            dataVar: 'json_20230502_coords_3',
+            layerName: 'layer_20230502_coords_3',
+            pane: 'pane_20230502_coords_3',
+            onEachFeature: pop_20230502_coords_3,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_crk_tmp_1_0(feature));
+                return L.shapeMarker(latlng, style_20230502_coords_3_0(feature));
             },
         });
-        var cluster_crk_tmp_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_20230502_coords_3 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
-        cluster_crk_tmp_1.addLayer(layer_crk_tmp_1);
+        cluster_20230502_coords_3.addLayer(layer_20230502_coords_3);
 
-        bounds_group.addLayer(layer_crk_tmp_1);
-        cluster_crk_tmp_1.addTo(map);
+        bounds_group.addLayer(layer_20230502_coords_3);
+        cluster_20230502_coords_3.addTo(map);
         setBounds();
         </script>
     </body>
